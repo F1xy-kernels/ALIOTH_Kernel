@@ -12,7 +12,6 @@
 #include "cam_common_util.h"
 #include "cam_packet_util.h"
 
-
 static void cam_sensor_update_req_mgr(
 	struct cam_sensor_ctrl_t *s_ctrl,
 	struct cam_packet *csl_packet)
