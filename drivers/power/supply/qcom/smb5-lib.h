@@ -1208,7 +1208,7 @@ int smblib_set_prop_typec_boost_otg_disable(struct smb_charger *chg,
 				     const union power_supply_propval *val);
 int smblib_set_prop_battery_charging_enabled(struct smb_charger *chg,
 				const union power_supply_propval *val);
-int smblib_set_vbus_disable(struct smb_charger *chg,
+void smblib_set_vbus_disable(struct smb_charger *chg,
 					bool disable);
 int smblib_get_iio_channel(struct smb_charger *chg, const char *propname,
 					struct iio_channel **chan);

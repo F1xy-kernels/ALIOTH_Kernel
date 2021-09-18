@@ -1525,7 +1525,7 @@ static void fts_power_supply_work(struct work_struct *work)
 	pm_stay_awake(ts_data->dev);
 	mutex_lock(&ts_data->power_supply_lock);
 	charger_mode = !!power_supply_is_system_supplied();
-	if (charger_mode != ts_data->charger_mode || ts_data->charger_mode < 0) {
+	if (charger_mode != ts_data->charger_mode || !ts_data->charger_mode) {
 		ts_data->charger_mode = charger_mode;
 		FTS_INFO("%s %d\n", __func__, charger_mode);
 		if (charger_mode) {

@@ -224,8 +224,8 @@ struct device_attribute *attr, const char *buf, size_t count)
 	unsigned int input;
 	struct xiaomi_touch_pdata *pdata = dev_get_drvdata(dev);
 
-	if (sscanf(buf, "%d", &input) < 0)
-			return -EINVAL;
+	if (sscanf(buf, "%hhd", &input) < 0)
+		return -EINVAL;
 
 	if (pdata->touch_data->palm_sensor_write)
 		pdata->touch_data->palm_sensor_write(!!input);

@@ -407,7 +407,7 @@ static int _block2mtd_panic_write(struct block2mtd_dev *dev, const u_char *buf,
 	sdev = get_scsi_device(bdev);
 	lba = sectors_to_logical(sdev, dev->blkdev->bd_part->start_sect);
 
-	pr_info("block2mtd_panic_write start sect:%d,lba is: 0x%x\n", dev->blkdev->bd_part->start_sect, lba);
+	pr_info("block2mtd_panic_write start sect:%d,lba is: 0x%lu\n", dev->blkdev->bd_part->start_sect, lba);
 
 	offset += (lba + index); //(bd_part->start_sect+ index);if oops address in lun0 is 32M, lba = 32*1024/4
 	ret = do_io(DISK_WRITE, dev->blkdev, buf, len, offset, 1);
