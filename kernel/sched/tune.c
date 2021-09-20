@@ -569,7 +569,7 @@ int schedtune_task_boost(struct task_struct *p)
 	/* Get task boost value */
 	rcu_read_lock();
 	st = task_schedtune(p);
-	task_boost = (st->boost > 0 && schedtune_adj_ta(p));
+	task_boost = max(st->boost, schedtune_adj_ta(p));
 	rcu_read_unlock();
 
 	return task_boost;
@@ -588,7 +588,7 @@ int schedtune_task_boost_rcu_locked(struct task_struct *p)
 
 	/* Get task boost value */
 	st = task_schedtune(p);
-	task_boost = (st->boost > 0 && schedtune_adj_ta(p));
+	task_boost = st->boost;
 
 	return task_boost;
 }
@@ -604,7 +604,7 @@ int schedtune_prefer_idle(struct task_struct *p)
 	/* Get prefer_idle value */
 	rcu_read_lock();
 	st = task_schedtune(p);
-	prefer_idle = (st->prefer_idle && schedtune_adj_ta(p));
+	prefer_idle = st->prefer_idle;
 	rcu_read_unlock();
 
 	return prefer_idle;
