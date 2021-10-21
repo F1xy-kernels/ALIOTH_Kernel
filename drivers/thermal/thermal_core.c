@@ -1730,7 +1730,7 @@ thermal_sconfig_store(struct device *dev,
 
 	ret = kstrtoint(buf, 10, &val);
 
-	atomic_set(&switch_mode, val);
+	// atomic_set(&switch_mode, val);
 
 	if (ret)
 		return ret;
@@ -1803,7 +1803,7 @@ cpu_limits_store(struct device *dev,
 		return -EINVAL;
 	}
 
-	cpu_limits_set_level(cpu, max);
+	// cpu_limits_set_level(cpu, max);
 
 	return len;
 }
